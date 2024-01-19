@@ -500,12 +500,12 @@ getNormalizingFactors <- function(params, nMax) {
   colnames(clust2dup) <- NULL
   rownames(clust2dup) <- NULL
 
-  # outfile <- "/home/PERSONALE/daniele.dallolio3/HARMONY_AML/tmp_Weights.csv"
-  outfile <- "/home/PERSONALE/daniele.dallolio3/temp/tmp_Weights.csv"
+  # outfile <- "tmp_Weights.csv"
+  outfile <- "tmp_Weights.csv"
   data.table::fwrite(clust2dup, outfile)
-  # filep0s <- "/home/PERSONALE/daniele.dallolio3/HARMONY_AML/temp_logP0s.csv"
-  filep0s <- "/home/PERSONALE/daniele.dallolio3/temp/temp_logP0s.csv"
-  cmdline <- paste0("/home/PERSONALE/daniele.dallolio3/FisherNonCentralHyper/P0FisherNonCentral_3.out -w ", outfile," -o ", filep0s," -n ", nMax," -t 24")
+  # filep0s <- "temp_logP0s.csv"
+  filep0s <- "temp_logP0s.csv"
+  cmdline <- paste0("FisherNonCentralHyper/P0FisherNonCentral_3.out -w ", outfile," -o ", filep0s," -n ", nMax," -t 24")
   system(cmdline)
   normalizing_constants <- as.matrix(data.table::fread(filep0s, header=FALSE))
   colnames(normalizing_constants) <- NULL
